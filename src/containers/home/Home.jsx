@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {Container, Row} from 'reactstrap'
+import {Container, Row, Col,Card} from 'reactstrap'
 
 
 
@@ -14,8 +14,6 @@ class Home extends Component {
                     Home
                     <Link to = "/login">login</Link>
                 </Row>                
-
-           
             </Container>
         )
     }

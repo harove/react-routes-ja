@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from './components/header/Header'
 import './App.css';
 
 import { PrivateRoute } from './components/private-route/PrivateRoute';
@@ -11,6 +12,7 @@ import PrivateHome from './containers/private-home/PrivateHome'
 function App() {
   return (
     <Router>
+      <Header />
       <Route path="/" exact component={Home} />
       <Route path="/login" component={Login} />
       <PrivateRoute path="/private" component={PrivateHome} />
