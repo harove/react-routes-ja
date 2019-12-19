@@ -7,6 +7,7 @@ const userData = {
 
 export const login = () => {
     ls.setItem(SESSION_KEY, JSON.stringify(userData));
+    console.log(ls);
 }
 
 export const logout = () => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {login} from '../../utils/session'
+import {login} from '../../utils/session';
 
 class Login extends Component {
 
@@ -8,6 +8,7 @@ class Login extends Component {
     }
 
     componentWillUnmount = () => {
+        console.log('hola');
         alert(1);
     }
 
