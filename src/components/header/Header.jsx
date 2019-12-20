@@ -10,9 +10,11 @@ import {
   NavbarText
 } from 'reactstrap';
 
+import {NavLink as RRNavLink} from 'react-router-dom';
+
+
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
 
   return (
@@ -23,13 +25,16 @@ const Header = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/">Home</NavLink>
+              
             </NavItem>
             <NavItem>
               <NavLink href="/login">Login</NavLink>
             </NavItem>
           </Nav>
           <NavbarText>Simple Text</NavbarText>
+          <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
+          <NavLink tag={RRNavLink} exact to="/login" activeClassName="active">Login</NavLink>
+          
         </Collapse>
       </Navbar>
     </div>
