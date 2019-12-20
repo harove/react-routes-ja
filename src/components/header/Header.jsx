@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Collapse,
   Navbar,
@@ -8,37 +8,38 @@ import {
   NavItem,
   NavLink,
   NavbarText
-} from 'reactstrap';
+} from "reactstrap";
 
-import {NavLink as RRNavLink} from 'react-router-dom';
+import { NavLink as RRNavLink } from "react-router-dom";
+import { getName } from '../../utils/getEnv';
 
-
-const Header = (props) => {
+const Header = props => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Mi empresa</NavbarBrand>
+        <NavbarBrand href="/">{getName()}</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              
+              <NavLink tag={RRNavLink} exact to="/" activeClassName="active">
+                Home
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/login">Login</NavLink>
+              <NavLink tag={RRNavLink} to="/login" activeClassName="active">
+                Login
+              </NavLink>
             </NavItem>
           </Nav>
           <NavbarText>Simple Text</NavbarText>
-          <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
-          <NavLink tag={RRNavLink} exact to="/login" activeClassName="active">Login</NavLink>
-          
         </Collapse>
       </Navbar>
     </div>
   );
-}
+};
 
 export default Header;
