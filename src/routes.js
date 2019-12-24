@@ -3,5 +3,4 @@ const routes = {
     login: '/login',
     privateHome: '/private',
 };
-​
 export default routes;

@@ -1,28 +1,49 @@
-import React, {useEffect} from 'react';
-import {logout} from '../../utils/session';
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { logout } from "../../utils/session";
+import { Link } from "react-router-dom";
+import { findAllPost } from "../../client/post.client";
+import { Container, Row, Col, Table } from "reactstrap";
 
 const PrivateHome = () => {
+  const [posts, setPosts] = useState([]);
 
-    const handlerLogout = () => {   
-        logout();
-    };
+  useEffect(() => {
+    findAllPost()
+      .then(response => {
+        setPosts(response.data.data);
+      })
+      .catch(error => {});
+  }, []);
 
-    useEffect(() => {
-        console.log('useEffect start')
-        return () => {
-            console.log('functional will unmount');
-        };
-    },[])
+  const handlerLogout = () => {
+    logout();
+  };
 
-    return (
-        <div className="private-home">
-            Private Home
-            <button onClick = {handlerLogout}>
-                Cerrar sesión
-            </button>
-            <Link to = "/"> Home </Link>
-        </div>
-    );
+  return (
+    <Container className="private-home">
+      Private Home
+      <button onClick={handlerLogout}>Cerrar sesión</button>
+      <Link to="/"> Home </Link>
+      <Table>
+        {/*JSON.stringify(posts)*/}
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>title</td>
+            <td>description</td>
+          </tr>
+        </thead>
+        <tbody>
+          {posts.map(post => (
+            <tr key={post.id}>
+              <td>{post.id}</td>
+              <td>{post.title}</td>
+              <td>{post.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Container>
+  );
 };
 export default PrivateHome;
